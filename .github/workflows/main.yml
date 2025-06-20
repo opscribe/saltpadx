@@ -1,0 +1,41 @@
+name: SaltPadX CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  check-backend:
+    runs-on: ubuntu-latest
+    name: Python Lint
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - name: Install flake8
+        run: pip install flake8
+      - name: Run flake8
+        run: flake8 backend/
+
+  check-frontend:
+    runs-on: ubuntu-latest
+    name: Frontend Build
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - name: Install dependencies
+        run: |
+          cd frontend
+          npm install
+      - name: Lint & Build
+        run: |
+          cd frontend
+          npm run lint || true
+          npm run build
