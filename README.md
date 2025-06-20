@@ -27,3 +27,9 @@ A Docker-based deployment or installer script will be provided once the initial 
 Apache 2.0 — see `LICENSE`.
 
 ## ✨ Maintained by: [opscribe](https://github.com/opscribe)
+
+---
+
+### 👣 Based on:
+[SaltPad](https://github.com/Lothiraldan/saltpad) by Lothiraldan, archived in 2021.  
+Licensed under the Apache 2.0 License.

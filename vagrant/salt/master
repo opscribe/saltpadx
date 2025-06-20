@@ -1,0 +1,33 @@
+cachedir: /var/cache/salt/master
+conf_file: /etc/salt/master
+external_auth:
+  pam:
+    vagrant:
+    - .*
+    - '@runner'
+    - '@wheel'
+file_roots:
+  base:
+  - /srv/salt
+fileserver_backend:
+- roots
+
+master_roots:
+  base:
+  - /srv/salt-master
+pillar_roots:
+  base:
+  - /srv/pillar
+
+rest_cherrypy:
+#rest_tornado:
+  debug: true
+  disable_ssl: true
+  port: 5417
+  host: 0.0.0.0
+  websockets: True
+  cors_origin: '*'
+  app: /opt/saltpad-dev/dist/
+
+gitfs_remotes:
+  - https://github.com/saltstack-formulas/nginx-formula
